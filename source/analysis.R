@@ -82,8 +82,8 @@ plot_jail_pop_by_states <- function(states) {
 
 ## Section 5  ---- 
 #----------------------------------------------------------------------------#
-# African-American incarceration rate by state
-# These functions graph African American incarceration rates by state
+# African-American incarceration rate by state compared to white incarceration by state
+# These functions graph African American incarceration rates by state and white incarceration rate by state
 # See Canvas
 #----------------------------------------------------------------------------#
 get_jail_pop_by_states_black_white <- function(states) {

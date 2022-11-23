@@ -26,9 +26,9 @@ This report is an analysis of the US prison system and the racial implications t
 The key values I am interested in in this data set are the Black Male Prison Population count, the White Male Prison Population Count, and the Male Prison Population These values are interesting because they can tell us the differences between incarcerated whites and blacks over a backdrop of all males in the prison system without regards to race. I have calculated the average black prison population per county in 2018, the average white prison population per county in 2018, and the average male prison population in 2018. The average black prison population by county in 2018 was 9185.912, the average white prison population by county in 2018 was 41094.818, and the average male prison population by county in 2018 was 27545.735 It should be noted that much of the data is missing. These variables help us better understand inequality in the prison system by isolating and comparing race and gender in the prison system. These variables can tell us if there is a disproportionate number of imprisoned blacks to whites and males to females.
 
 ##Growth of the U.S. Prison Population
-'''{r echo=FALSE}
+```{r echo=FALSE}
 plot_jail_pop_for_us()
-'''
+```
 
 ###Chart Caption:
 This chart show the the total number of people in jail every year from 1970 to 2018.
@@ -38,9 +38,9 @@ In this chart I sought to answer the question: what is the overall trend of the 
 
 
 ##Growth of Prison Population by State
-'''{r echo=FALSE}
+```{r echo=FALSE}
 plot_jail_pop_by_states(c("WA","CA","NY", "AL","WI"))
-'''
+```
 
 ###Chart Caption:
 This chart shows the total number of incarcerated people by state from 1970 to 2018.
@@ -49,9 +49,9 @@ This chart shows the total number of incarcerated people by state from 1970 to 2
 In this chart I wanted to ask the question does region play a role in total incarcerated people. Therefore, in this chart I chose 5 states from various parts of the US. Washington from the Pacific North West, California from the West Coast, Alabama from the South, Wisconsin from the midwest, and New York from the East Coast. This chart reveals that California and New York have by far the highest number of incarcerated people. This is mostly likely due to their large population sizes compared to the rest of the states selected. In addition, there is a rise and fall each year in the total number of incarcerated people.
 
 ##African American incarceration by State
-'''{r echo=FALSE}
+```{r echo=FALSE}
 plot_jail_pop_by_race_state()
-'''
+```
 
 
 ###Chart Caption:
@@ -61,9 +61,9 @@ This chart shows the total number of African-Americans incarcerated by state sub
 In this chart I asked the question: do African-Americans face more incarceration in different states when compared to White incarceration. I took four states from different parts of the US and compared their incarceration totals for Africa-Americans and whites. I found that there was the biggest difference in California and New York. This would mean that there are a larger number of whites incarcerated in these states than blacks. In addition, states such as Alabama and Florida have smaller differences meaning there is a higher rate of incarceration for blacks than in California or New York when compared to Whites. It would seem that states in the South incarcerate blacks at a higher rate than in states such as California in the West or New York in the Northeast.
 
 ##African American incarceration in the US
-'''{r echo=FALSE}
+```{r echo=FALSE}
 plotMapAAI()
-'''
+```
 
 ###Chart Caption:
 This chart shows African-American incarceration in the US.
