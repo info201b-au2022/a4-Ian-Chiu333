@@ -1,6 +1,6 @@
 ---
-title: "Your A4 Report Title (TODO: Revise title)"
-author: "Your Name"
+title: "An Analysis of the US Prison System and it's Inequalities"
+author: "Ian Chiu"
 date: '2022-11-01'
 output: html_document
 ---
@@ -11,35 +11,60 @@ source("../source/analysis.R")
 ```
 
 ## Abstract 
-[TODO: Include a short abstract (about 50 words)]
-
-# Test (TODO: Remove before submission!!)
-```{r echo=FALSE}
-q1_string <- test_query1()
-num <- 5
-```
-As you know, this is a markdown report. The [R Markdown Cheatsheet](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf) is **useful!**
-
-* Here's a test of a dynamic variable. Say **"`r q1_string`!!!** 
-* Here's another test. A vector
-of numbers: `r test_query2(num)`.
-
-Recall that _{r echo=TRUE}_ can be used to display the code, 
-which is very useful when developing and debugging a report. Here's an example: 
-
-```{r echo=TRUE}
-num <- 5
-sum <- sum(test_query2(num))
-print(sum)
-```
+This report is an analysis of the US prison system and the racial implications that the US' frequently discriminatory rules and policies have on minority populations, especially African-Americans. This analysis includes various data visuals and analyzing of prison population data to draw a conclusion and bring about the true scale of how the US prison system is structured.
 
 ## Introduction 
-[TODO]
+  The US prison system is discriminatory plain and simple. From the local level of police being more likely to pull over and arrest people of color and immigrants to the federal level where policies such as the War on Drugs have systematically arrested people of color and enacted policies which prevent these communities from developing, almost all branches and levels of the US government are guilty.
 
+  This data set is incredibly important because it is raw and unfiltered data that gives viewers an opportunity to glance into the US prison system, something that is not easily accessible or common information. In addition, this data set also allows prisoners to have a voice to the outside when in many cases many do not. For example, African-Americans are disproportionately incarcerated and as a result this population has no access to outside communication and have lost the right to defend themselves. In prison, many of these people are dehumanized and they lose many of their rights that are instrumental in telling their side of their stories.
+  
+  In this report, I will answer the question: How discriminatory is the US prison system and what does this say to the wider racism many minorities and immigrants face? 
+  
 ## Data Summary 
-[TODO]
+The key values I am interested in in this data set are the Black Male Prison Population count, the White Male Prison Population Count, and the Male Prison Population These values are interesting because they can tell us the differences between incarcerated whites and blacks over a backdrop of all males in the prison system without regards to race. I have calculated the average black prison population per county in 2018, the average white prison population per county in 2018, and the average male prison population in 2018. The average black prison population by county in 2018 was 9185.912, the average white prison population by county in 2018 was 41094.818, and the average male prison population by county in 2018 was 27545.735 It should be noted that much of the data is missing. These variables help us better understand inequality in the prison system by isolating and comparing race and gender in the prison system. These variables can tell us if there is a disproportionate number of imprisoned blacks to whites and males to females.
 
-[TODO ... other sections ... See Canvas for details]
+##Growth of the U.S. Prison Population
+'''{r echo=FALSE}
+plot_jail_pop_for_us()
+'''
 
-_All the very best with your work!_
+###Chart Caption:
+This chart show the the total number of people in jail every year from 1970 to 2018.
 
+###Summary Paragraph:
+In this chart I sought to answer the question: what is the overall trend of the total number of people in jail from 1970 to 2018. This chart reveals that the rate of people in jail has steadily increased. By 2018, the total jailed population is approximately four times the total jailed population in 1970. While there were close to constant levels of the jailed population from 1970 to 1980 and a slight decrease from 2009 to 2018, from 1980 to 2009 the jailed population has increased.
+
+
+##Growth of Prison Population by State
+'''{r echo=FALSE}
+plot_jail_pop_by_states(c("WA","CA","NY", "AL","WI"))
+'''
+
+###Chart Caption:
+This chart shows the total number of incarcerated people by state from 1970 to 2018.
+
+###Summary Paragraph:
+In this chart I wanted to ask the question does region play a role in total incarcerated people. Therefore, in this chart I chose 5 states from various parts of the US. Washington from the Pacific North West, California from the West Coast, Alabama from the South, Wisconsin from the midwest, and New York from the East Coast. This chart reveals that California and New York have by far the highest number of incarcerated people. This is mostly likely due to their large population sizes compared to the rest of the states selected. In addition, there is a rise and fall each year in the total number of incarcerated people.
+
+##African American incarceration by State
+'''{r echo=FALSE}
+plot_jail_pop_by_race_state()
+'''
+
+
+###Chart Caption:
+This chart shows the total number of African-Americans incarcerated by state subtracted by the total number of Whites incarcerated by state.
+
+###Summary Paragraph:
+In this chart I asked the question: do African-Americans face more incarceration in different states when compared to White incarceration. I took four states from different parts of the US and compared their incarceration totals for Africa-Americans and whites. I found that there was the biggest difference in California and New York. This would mean that there are a larger number of whites incarcerated in these states than blacks. In addition, states such as Alabama and Florida have smaller differences meaning there is a higher rate of incarceration for blacks than in California or New York when compared to Whites. It would seem that states in the South incarcerate blacks at a higher rate than in states such as California in the West or New York in the Northeast.
+
+##African American incarceration in the US
+'''{r echo=FALSE}
+plotMapAAI()
+'''
+
+###Chart Caption:
+This chart shows African-American incarceration in the US.
+
+###Summary Paragraph:
+In this chart I asked the question: does region, state, or areas of the country play a role in the incarceration of African-Americans? In the map it seems that the highest number of incarcerated African Americans are in the South, particularly Georgia, Texas, and Florida. Some states such as California and New York also have high numbers of incarcerated African-Americans.It appears that areas in the South have a very high number of incarcerated African Americans meaning that state and region do play a role in the incarceration of African-Americans. This could be due to the fact that the South is relatively conservative and conservative policies tend to focus more on punishment and putting people in jail then rehabilitation. 
