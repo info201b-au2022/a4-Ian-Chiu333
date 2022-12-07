@@ -3,8 +3,8 @@ title: "An Analysis of the US Prison System and it's Inequalities"
 author: "Ian Chiu"
 date: "2022-11-01"
 output:
-  pdf_document: default
   html_document: default
+  pdf_document: default
 ---
 
 ```{r eval=TRUE, echo=FALSE, message=FALSE}
