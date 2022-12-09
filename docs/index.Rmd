@@ -8,7 +8,6 @@ output:
 ---
 
 ```{r eval=TRUE, echo=FALSE, message=FALSE}
-source("../source/a4-helpers.R")
 source("../source/analysis.R")
 ```
 
@@ -62,7 +61,7 @@ In this chart I asked the question: do African-Americans face more incarceration
 
 ##African American incarceration in the US
 ```{r echo=FALSE}
-plotMapAAI()
+plotMapByAAI()
 ```
 
 ###Chart Caption:

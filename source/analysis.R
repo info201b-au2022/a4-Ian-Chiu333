@@ -1,7 +1,7 @@
 library(tidyverse)
 library(dplyr)
 library('ggplot2')
-incarceration_trends <- read.csv("C:/Users/16287/Documents/info201/data/incarceration-trends/incarceration_trends.csv")
+incarceration_trends <- read.csv("https://raw.githubusercontent.com/vera-institute/incarceration-trends/master/incarceration_trends.csv")
 View(incarceration_trends)
 # The functions might be useful for A4
 source("C:/Users/16287/Documents/info201/assignments/a4-Ian-Chiu333/source/a4-helpers.R")
@@ -45,8 +45,8 @@ get_year_jail_pop <- function() {
 return(yearTotalPop)   
 }
 
-get_year_jail_pop()
 # This function creates a bar graph of the total jail population per year.
+
 plot_jail_pop_for_us <- function()  {
   plot <- ggplot(get_year_jail_pop()) +
     geom_col(mapping = aes(x = year, y = total)) +
@@ -87,23 +87,29 @@ plot_jail_pop_by_states <- function(states) {
 # See Canvas
 #----------------------------------------------------------------------------#
 get_jail_pop_by_states_black_white <- function(states) {
-  stateJailPop <- incarceration_trends %>%
-    select(year, black_pop_15to64, white_pop_15to64, state) %>%
+  stateJailPopBlack <- incarceration_trends %>%
+    select(year, black_pop_15to64, state) %>%
     drop_na() %>%
     filter(state == states) %>%
-    group_by(year, state) %>%
-    summarize(totalBlack = sum(black_pop_15to64)) %>%
-    summarize(totalWhite = sum(white_pop_15to64)) %>%
-    mutate(totaldiff = totalBlack - totalWhite) %>%
-    arrange(state)
+    group_by(state, year) %>%
+    summarize(totalBlack = sum(black_pop_15to64))
+  
+  stateJailPopWhite <- incarceration_trends %>%
+    select(year, white_pop_15to64, state) %>%
+    drop_na() %>%
+    filter(state == states) %>%
+    group_by(state, year) %>%
+    summarize(totalWhite = sum(white_pop_15to64))
+  
+  stateJailPop <- merge(stateJailPopWhite, stateJailPopBlack, by=c("year","state"))
+
+  stateJailPop <- mutate(stateJailPop, diff = stateJailPop$totalWhite - stateJailPop$totalBlack)
+  
   return(stateJailPop)
 }
 
-whiteBlackJailPop <- get_jail_pop_by_states_black_white(c("AL", "CA", "NY", "FL"))
-
-
 plot_jail_pop_by_race_state <- function() {
-  plot <- ggplot(data = whiteBlackJailPop, aes(x=year, y=total, color=state)) +
+  plot <- ggplot(data = get_jail_pop_by_states_black_white(c("AL", "CA", "NY", "FL")), aes(x=year, y=diff, color=state)) +
     geom_line() +
     ggtitle("Jail Populations By State and Race")
   return(plot)
@@ -135,7 +141,7 @@ dataJoin <- function() {
   return(state_shape)
 }
 
-plotMapAAI <- function() {
+plotMapByAAI <- function() {
   state_shape <- dataJoin()
   plotMap <- ggplot(state_shape, aes(long, lat, group=group, fill=Total)) +
     geom_polygon(color="grey") +
